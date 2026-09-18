@@ -93,6 +93,21 @@
     body { align-content: start; }
   }
 
+  /* 500px is where the layout runs out of give: 4vw drops under the 20px
+     gutter floor and --logo-w has already bottomed out at its 188px
+     minimum, so from here down the wordmark's share of the content width
+     only climbs (41% at 500px, 56% at 375px, 67% at 320px) and it stops
+     reading as a corner mark. Shrink it and center it instead. */
+  @media (max-width: 500px) {
+    :root { --logo-w: 150px; }
+
+    .logo {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .logo, .memo { animation: none; opacity: 1; }
     .logo__strike { transition: none; }
